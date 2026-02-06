@@ -155,4 +155,20 @@ body.page-exit {
   opacity: .9;
 }
 
+@media (max-width: 768px) { /* adjusts for phones/tablets */
+  .hero { 
+    display: flex;
+    flex-direction: column; /* stack items vertically */
+    align-items: center;    /* centers horizontally */
+    justify-content: center; /* optional: centers vertically */
+    text-align: center;     /* centers the text */
+    margin: 0 auto;         /* makes sure container is centered */
+    padding: 0 20px;        /* small padding so text doesn’t touch edges */
+  }
+
+  .hero h1, 
+  .hero p {
+    width: 100%;            /* ensures full width for text */
+  }
+}
 
