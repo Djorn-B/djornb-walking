@@ -1,0 +1,413 @@
+/* -------------------- RESET -------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: system-ui, sans-serif; 
+  color: #fff; 
+  background: #0e0e0e; 
+  overflow-x: hidden; 
+  line-height: 1.6; }
+
+
+/* -------------------- BODY -------------------- */
+body {
+  font-family: system-ui, sans-serif;
+  color: #fff;
+  background: #0e0e0e;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* -------------------- BACKGROUND -------------------- */
+.bg-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-container img {
+  width: 100%;
+  height: 190%;
+  object-fit: cover;
+  transform: scale(1.1);
+  filter: brightness(0.75);
+  transition: transform 0.1s linear;
+}
+
+/* -------------------- SONGS CONTAINER -------------------- */
+.songs {
+  position: relative;
+  isolation: isolate;
+  padding: 10rem 2rem;
+}
+
+/* -------------------- SONG BLOCK -------------------- */
+.song {
+  position: relative;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+/* -------------------- SONG BUTTON -------------------- */
+.song-button {
+  background: none;
+  border: none;
+  color: #fff;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.tell-more {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.song-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.song-number {
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.song-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.15em;
+  margin-top: 0.4rem;
+  transition: letter-spacing 0.35s ease;
+}
+
+.song-hook {
+  font-size: 1.3rem;
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+.song-button:hover .song-hook {
+  opacity: 1;
+}
+
+.song-button:hover .song-title {
+  letter-spacing: 0.25em;
+}
+
+.song-button:hover {
+  transform: translateY(-4px);
+}
+
+.song-button::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.4);
+  margin: 0.8rem auto 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.song-button:hover::after {
+  opacity: 1;
+}
+
+/* -------------------- VOLUME -------------------- */
+.volume-controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.vol-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.volume-slider {
+  width: 45%;
+}
+
+/* MUTE BUTTON */
+.mute-btn {
+  margin: 0.6rem auto 0;
+  background: rgba(255,255,255,0.0);
+  border: none;
+  color: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* -------------------- IMAGE WRAPPER -------------------- */
+.song-image-wrapper {
+  position: relative;
+  width: min(90vw, 520px); /* wider, intentional */
+  margin: 3rem auto 2rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.song-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(0.65);
+}
+
+/* vignette overlay */
+.song-image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 14, 14, 0) 60%,
+    rgba(14, 14, 14, 0.485) 90%,
+    rgba(14, 14, 14, 0) 120%
+  );
+
+  pointer-events: none;
+}
+
+
+/* -------------------- IMAGE OVERLAY -------------------- */
+.song-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.2rem;
+}
+
+/* CENTER PAUSE */
+.pause-btn.center {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+
+  background: none;
+  border: none;
+  border-radius: 0;
+
+  color: #fff;
+  font-size: 1.4rem;
+  padding: 0;
+
+  cursor: pointer;
+  opacity: 0.90;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.pause-btn.center:hover {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+
+/* DESCRIPTION */
+.song-description {
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin: auto 1rem 3.5rem;
+}
+
+/* -------------------- TELL ME MORE -------------------- */
+.tell-more-dropdown {
+  text-align: center;
+  margin-top: 1.2rem;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* -------------------- DROPDOWN CONTENT -------------------- */
+.preview-audio {
+  display: none;
+}
+
+.pause-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.volume-slider {
+  width: 200px;
+  margin-bottom: 1.5rem;
+}
+
+.song-description {
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+/* -------------------- DROPDOWN -------------------- */
+.song-dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 2.5rem auto 0;
+
+  max-height: 0;
+  overflow: hidden;
+
+  opacity: 0;
+  pointer-events: none;
+
+  filter: blur(6px);
+  transform: translateY(14px);
+
+  transition:
+    max-height 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    transform 0.45s ease,
+    filter 0.35s ease;
+}
+
+.song-dropdown.open {
+  max-height: 1400px;
+  opacity: 1;
+  pointer-events: auto;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* HOME button */
+.home-btn {
+  width: 70px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.home-btn:hover {
+  opacity: 1;
+}
+
+
+.chapter-head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.75);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: space-between;
+
+  padding: 1rem 2rem;
+  z-index: 50;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: none; /* starts without blur */
+}
+
+.chapter-center {
+  flex: 1;
+  text-align: center;
+}
+
+.chapter-spacer {
+  width: 70px; /* balances HOME button */
+}
+
+.chapter-label {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  letter-spacing: 0.15em;
+}
+
+.chapter-title {
+  display: block;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  margin-top: 0.15rem;
+}
+
+/* progress bar */
+.chapter-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+}
+
+.chapter-fill {
+  height: 100%;
+  width: 0%;
+  background: white;
+  transition: width 0.1s linear;
+}
+
+/* BACK TO TOP BUTTON */
+#back-to-top 
+{ 
+  position: fixed; 
+  bottom: 3rem; 
+  right: 3rem; 
+  background: rgba(255,255,255,0.2); 
+  color: #fff; 
+  border: none; 
+  padding: 0.6rem 1rem; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-size: 1rem; 
+  opacity: 0.7; 
+  transition: transform 0.35s ease, opacity 0.35s ease; 
+  z-index: 100; 
+}
+
+#back-to-top:hover 
+{ 
+  transform: scale(1.08); 
+  opacity: 1; 
+}
+
+/* HOME BUTTON */
+#home-button 
+{ 
+  width: 70px; 
+  background: none; 
+  border: none; 
+  color: #fff; 
+  font-size: 0.75rem; 
+  letter-spacing: 0.15em; 
+  opacity: 0.7; 
+  cursor: pointer; 
+}
+#home-button:hover 
+{ opacity: 1; }
